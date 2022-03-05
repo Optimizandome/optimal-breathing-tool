@@ -1,1 +1,2 @@
-export * from "./BreathingCircle";
+export * from "./Breathing";
+export * from "./BreathingConfig";

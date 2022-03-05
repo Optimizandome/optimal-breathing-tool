@@ -1,16 +1,13 @@
-import { useState } from "react";
-import { animated, useSpring, useTrail, config } from "react-spring";
+import { useState, useEffect } from "react";
+import { animated, useSpring } from "react-spring";
 import { Box, Flex, Text } from "theme-ui";
-import {
-  BreathingCircleProps,
-  CircletBreathing,
-} from "./BreathingCircle.definitions";
 
-// @TODO: refactor this component to parameterize everything  eg:  0.7 / 1 , etc
+import { BreathingProps, BreathingAnimation } from "./Breathing.def";
+
 const extractDelayAndDuration = ({
   breathingState,
   duration,
-}: CircletBreathing): any => {
+}: BreathingAnimation): any => {
   switch (breathingState) {
     case "inhale":
       return {
@@ -79,9 +76,7 @@ const extractDelayAndDuration = ({
   }
 };
 
-export const BreathingCircle: React.FC<BreathingCircleProps> = ({
-  breathings = [],
-}) => {
+export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
   const [toggle, setToggle] = useState(false);
   const breathingsSize = breathings.length;
   const [index, setIndex] = useState(0);
@@ -98,22 +93,16 @@ export const BreathingCircle: React.FC<BreathingCircleProps> = ({
       setToggle(!toggle);
     },
   });
+  useEffect(() => {
+    setIndex(0);
+    setToggle(false);
+  }, [breathings]);
 
   return (
-    <Box>
-      <button
-        onClick={() => {
-          setToggle(!toggle);
-        }}
-      >
-        reset
-      </button>
-      animation index: {index}
-      <hr />
+    <Box sx={{ p: 6 }}>
       <Flex
         sx={{
-          size: "800px",
-          bg: "secondary",
+          size: "500px",
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
@@ -160,7 +149,9 @@ export const BreathingCircle: React.FC<BreathingCircleProps> = ({
                 fontWeight: "bold",
               }}
             >
-              <Text sx={{ color: "primary" }}>{breathings[index].label}</Text>
+              <Text sx={{ color: "primary", userSelect: "none" }}>
+                {breathings[index].label}
+              </Text>
             </animated.div>
           </animated.div>
         </Flex>
