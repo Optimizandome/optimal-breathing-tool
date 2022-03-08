@@ -17,24 +17,39 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
     switch (breathingState) {
       case "standBy":
         return (
-          <Flex>
-            <Button onClick={onStart}>Start</Button>
-          </Flex>
+          <Button
+            onClick={onStart}
+            sx={{
+              size: "60%",
+              bg: "primary",
+              borderRadius: "50%",
+              fontSize: "60px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              color: "white",
+            }}
+          >
+            Start
+          </Button>
         );
 
       case "countDown":
         return (
-          <Flex>
+          <Flex
+            sx={{
+              size: "60%",
+              borderRadius: "50%",
+              bg: "primary",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Timer time={3} onComplete={onTimerCompleted} />
           </Flex>
         );
 
       case "breathing":
-        return (
-          <Flex>
-            <MemoizedBreathing breathings={breathings} />
-          </Flex>
-        );
+        return <MemoizedBreathing breathings={breathings} />;
 
       default:
         return <Flex>state not found</Flex>;
@@ -45,8 +60,8 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
     <Flex>
       <Flex
         sx={{
+          size: [6, 7, 8, 9],
           p: 3,
-          flex: 1,
           alignItems: "center",
           justifyContent: "center",
         }}

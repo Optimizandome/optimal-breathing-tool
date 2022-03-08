@@ -2,12 +2,18 @@ import { useState, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 import { Box, Flex, Text } from "theme-ui";
 
-import { BreathingProps, BreathingAnimation } from "./Breathing.def";
+import { BreathingAnimation } from "types";
+import { BreathingProps } from "./Breathing.def";
 
 const extractDelayAndDuration = ({
-  breathingState,
-  duration,
-}: BreathingAnimation): any => {
+  currentState,
+  previousState,
+}: {
+  currentState: BreathingAnimation;
+  previousState: BreathingAnimation;
+}): any => {
+  const { breathingState, duration, color } = currentState;
+  const { color: prevColor } = previousState;
   switch (breathingState) {
     case "inhale":
       return {
@@ -15,13 +21,13 @@ const extractDelayAndDuration = ({
           duration: duration,
         },
         from: {
-          transform: "scale(0.5)",
-          color: "#313131",
+          transform: "scale(0.6)",
+          color: prevColor,
           x: 1,
         },
         to: {
           transform: "scale(1)",
-          color: "#323232",
+          color: color,
           x: 1,
         },
       };
@@ -32,12 +38,12 @@ const extractDelayAndDuration = ({
         },
         from: {
           transform: "scale(1)",
-          color: "#323232",
-          x: 0.7,
+          color: color,
+          x: 0,
         },
         to: {
           transform: "scale(1)",
-          color: "#313131",
+          color: prevColor,
           x: 1,
         },
       };
@@ -47,14 +53,14 @@ const extractDelayAndDuration = ({
           duration: duration,
         },
         from: {
-          color: "#313131",
           transform: "scale(1)",
-          x: 0.7,
+          color: prevColor,
+          x: 0,
         },
         to: {
-          transform: "scale(0.5)",
-          color: "#323232",
-          x: 0.7,
+          transform: "scale(0.6)",
+          color: color,
+          x: 0,
         },
       };
     case "exhale_hold":
@@ -63,14 +69,14 @@ const extractDelayAndDuration = ({
           duration: duration,
         },
         from: {
-          color: "#323232",
-          transform: "scale(0.5)",
+          transform: "scale(0.6)",
+          color: color,
           x: 1,
         },
         to: {
-          transform: "scale(0.5)",
-          color: "#313131",
-          x: 0.7,
+          transform: "scale(0.6)",
+          color: prevColor,
+          x: 0,
         },
       };
   }
@@ -82,7 +88,10 @@ export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
   const [index, setIndex] = useState(0);
 
   const props = useSpring({
-    ...extractDelayAndDuration(breathings[index]),
+    ...extractDelayAndDuration({
+      currentState: breathings[index],
+      previousState: breathings[(index + breathingsSize - 1) % breathingsSize],
+    }),
     reset: true,
     reverse: toggle,
     onRest: () => {
@@ -99,63 +108,59 @@ export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
   }, [breathings]);
 
   return (
-    <Box sx={{ p: 6 }}>
+    <Flex
+      sx={{
+        size: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+      }}
+    >
+      <animated.div
+        style={{
+          width: "100%",
+          height: "100%",
+          borderRadius: "50%",
+          backgroundColor: props.color,
+          transition: "background .2s ease",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      ></animated.div>
       <Flex
         sx={{
-          size: "500px",
+          size: "80%",
           alignItems: "center",
           justifyContent: "center",
-          position: "relative",
+          position: "absolute",
         }}
       >
         <animated.div
           style={{
-            width: props.x.to((x: number) => `${x * 100}%`),
-            height: props.x.to((x: number) => `${x * 100}%`),
-            backgroundColor: "blue",
+            transform: props.transform,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
             borderRadius: "50%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          y
-        </animated.div>
-        <Flex
-          sx={{
-            size: "70%",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "absolute",
-          }}
-        >
           <animated.div
             style={{
-              transform: props.transform,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "white",
-              borderRadius: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              transition: "color 0.2s ease",
+              color: props.color,
+              fontSize: "80px",
+              position: "absolute",
+              fontWeight: "bold",
             }}
           >
-            <animated.div
-              style={{
-                color: props.color,
-                fontSize: "80px",
-                position: "absolute",
-                fontWeight: "bold",
-              }}
-            >
-              <Text sx={{ color: "primary", userSelect: "none" }}>
-                {breathings[index].label}
-              </Text>
-            </animated.div>
+            <Text sx={{ userSelect: "none" }}>{breathings[index].label}</Text>
           </animated.div>
-        </Flex>
+        </animated.div>
       </Flex>
-    </Box>
+    </Flex>
   );
 };

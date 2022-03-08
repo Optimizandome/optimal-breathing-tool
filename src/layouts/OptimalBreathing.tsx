@@ -2,7 +2,7 @@ import { Flex, Grid } from "theme-ui";
 
 import { BreathingControl, BreathingFeed } from "containers";
 
-const desktopColumnTemplate = "1fr 370px";
+const desktopColumnTemplate = "1fr 500px";
 
 export const OptimalBreathing: React.FC = () => (
   <Grid

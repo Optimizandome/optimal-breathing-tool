@@ -1,5 +1,5 @@
 export const theme = {
-  breakpoints: ["40em", "52em", "64em", "76em", "88em", "100em"],
+  breakpoints: ["480px", "768px", "1024px", "1200px"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512, 768],
   fonts: {
     body: "'Montserrat', sans-serif",
@@ -22,6 +22,7 @@ export const theme = {
     primary: "#132F44",
     secondary: "#F57F01",
     muted: "#cccccc",
+    gray: "#8D8D8D",
     info: "#2196F3",
     error: "#f2443e",
     success: "#64F57A",
@@ -34,7 +35,7 @@ export const theme = {
       fontWeight: "heading",
     },
   },
-  sizes: [8, 12, 18, 20, 24, 28, 32, 48, 64, 96, 128, 152, 356, 420, 512, 768],
+  sizes: [8, 18, 24, 32, 64, 128, 356, 420, 512, 768, 1024, 1200],
   radii: [12, 16, 20, 24, 26, 32, 38, 44],
   styles: {
     root: {

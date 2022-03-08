@@ -1,10 +1,5 @@
-type BreathingState = "inhale_hold" | "inhale" | "exhale" | "exhale_hold";
+import { BreathingAnimation } from "types";
 
-export type BreathingAnimation = {
-  breathingState: BreathingState;
-  duration: number;
-  label: string;
-};
 export type BreathingProps = {
   breathings: BreathingAnimation[];
 };
