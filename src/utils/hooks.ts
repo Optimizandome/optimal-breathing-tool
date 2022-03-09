@@ -27,6 +27,7 @@ export const useTimer = (init: number, onComplete?: () => void) => {
       });
     }, 1000);
     return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return { count, reset, togglePause };
 };

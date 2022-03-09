@@ -1,6 +1,6 @@
 export const theme = {
   breakpoints: ["480px", "768px", "1024px", "1200px"],
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512, 768],
+  space: [0, 4, 8, 16, 32, 164, 128, 256, 512, 768],
   fonts: {
     body: "'Montserrat', sans-serif",
     heading: "inherit",

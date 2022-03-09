@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { RootState } from "store";
+import { RootState, setRightMenuState } from "store";
+
 import { BreathSlab } from "components";
 import { BreathState } from "components/organisms/BreathSlab.def";
 
 export const BreathingFeed: React.FC = () => {
   const breathings = useSelector((state: RootState) => state.breath.breathings);
+  const isRightMenuOpen = useSelector(
+    (state: RootState) => state.layout.isRightMenuOpen
+  );
+
   const [currentBreathingState, setCurrentBreathingState] =
     useState<BreathState>("standBy");
+
+  const dispatch = useDispatch();
 
   const onTimerCompletedHandler = () => {
     setCurrentBreathingState("breathing");
@@ -18,6 +25,10 @@ export const BreathingFeed: React.FC = () => {
     setCurrentBreathingState("countDown");
   };
 
+  const onConfigHandler = () => {
+    dispatch(setRightMenuState(!isRightMenuOpen));
+  };
+
   useEffect(() => {
     setCurrentBreathingState("standBy");
   }, [breathings]);
@@ -25,10 +36,11 @@ export const BreathingFeed: React.FC = () => {
   return (
     <>
       <BreathSlab
-        breathingState={currentBreathingState}
         breathings={breathings}
-        onStart={onStartHandler}
+        breathingState={currentBreathingState}
         onTimerCompleted={onTimerCompletedHandler}
+        onStart={onStartHandler}
+        onConfig={onConfigHandler}
       />
     </>
   );

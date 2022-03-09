@@ -7,4 +7,5 @@ export type BreathSlabProps = {
   breathings: BreathingAnimation[];
   onTimerCompleted: () => void;
   onStart: () => void;
+  onConfig: () => void;
 };

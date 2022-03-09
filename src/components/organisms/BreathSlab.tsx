@@ -3,7 +3,7 @@ import { Button, Flex } from "theme-ui";
 
 import { Timer } from "components/atoms";
 import { BreathSlabProps } from "./BreathSlab.def";
-import { Breathing } from "components/molecules";
+import { Breathing, TopMenu } from "components/molecules";
 
 const MemoizedBreathing = memo(Breathing);
 
@@ -12,6 +12,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
   breathings,
   onTimerCompleted,
   onStart,
+  onConfig,
 }) => {
   const currentElement = () => {
     switch (breathingState) {
@@ -23,7 +24,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
               size: "60%",
               bg: "primary",
               borderRadius: "50%",
-              fontSize: "60px",
+              fontSize: [6, 7, 8, 9],
               fontWeight: "bold",
               cursor: "pointer",
               color: "white",
@@ -57,16 +58,26 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
   };
 
   return (
-    <Flex>
-      <Flex
-        sx={{
-          size: [6, 7, 8, 9],
-          p: 3,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {currentElement()}
+    <Flex
+      sx={{
+        size: "100%",
+        position: "relative",
+        flexDirection: "column",
+      }}
+    >
+      <TopMenu onConfig={onConfig} />
+      <Flex sx={{ width: "100%", justifyContent: "center" }}>
+        <Flex
+          sx={{
+            size: [6, 7, 8, 9],
+            aspectRatio: "1/1",
+            p: 3,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {currentElement()}
+        </Flex>
       </Flex>
     </Flex>
   );

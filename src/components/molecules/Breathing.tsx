@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
-import { Box, Flex, Text } from "theme-ui";
+import { Flex, Text } from "theme-ui";
 
 import { BreathingAnimation } from "types";
 import { BreathingProps } from "./Breathing.def";
@@ -152,12 +152,13 @@ export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
             style={{
               transition: "color 0.2s ease",
               color: props.color,
-              fontSize: "80px",
               position: "absolute",
               fontWeight: "bold",
             }}
           >
-            <Text sx={{ userSelect: "none" }}>{breathings[index].label}</Text>
+            <Text sx={{ userSelect: "none", fontSize: [7, 8, 9] }}>
+              {breathings[index].label}
+            </Text>
           </animated.div>
         </animated.div>
       </Flex>
