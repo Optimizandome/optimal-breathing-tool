@@ -3,7 +3,7 @@ import { Button, Flex } from "theme-ui";
 
 import { Timer } from "components/atoms";
 import { BreathSlabProps } from "./BreathSlab.def";
-import { Breathing, TopMenu } from "components/molecules";
+import { Breathing, BreathingsItem, TopMenu } from "components/molecules";
 
 const MemoizedBreathing = memo(Breathing);
 
@@ -78,6 +78,9 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
         >
           {currentElement()}
         </Flex>
+      </Flex>
+      <Flex sx={{ maxWidth: 10, margin: "0 auto", width: "100%" }}>
+        <BreathingsItem times={[3000, 2000, 3000, 4000]} />
       </Flex>
     </Flex>
   );
