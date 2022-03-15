@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { RootState, setRightMenuState } from "store";
-
+import { RootState, setRightMenuState, updateBreathings } from "store";
+import { BreathsSet } from "types";
 import { BreathSlab } from "components";
 import { BreathState } from "components/organisms/BreathSlab.def";
 
@@ -25,6 +25,11 @@ export const BreathingFeed: React.FC = () => {
     setCurrentBreathingState("countDown");
   };
 
+  const onSelectBreathSetHandler = (set: BreathsSet) => {
+    dispatch(setRightMenuState(false));
+    dispatch(updateBreathings({ times: set.breaths }));
+  };
+
   const onConfigHandler = () => {
     dispatch(setRightMenuState(!isRightMenuOpen));
   };
@@ -41,6 +46,7 @@ export const BreathingFeed: React.FC = () => {
         onTimerCompleted={onTimerCompletedHandler}
         onStart={onStartHandler}
         onConfig={onConfigHandler}
+        selectBreathSet={onSelectBreathSetHandler}
       />
     </>
   );

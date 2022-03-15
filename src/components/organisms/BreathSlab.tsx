@@ -1,9 +1,11 @@
 import { memo } from "react";
-import { Button, Flex } from "theme-ui";
+import { Button, Flex, Heading } from "theme-ui";
 
 import { Timer } from "components/atoms";
 import { BreathSlabProps } from "./BreathSlab.def";
-import { Breathing, BreathingsItem, TopMenu } from "components/molecules";
+import { Breathing, BreathSetItem, TopMenu } from "components/molecules";
+import { PRE_SETS } from "constants/config";
+import { BreathAnimationToMilliseconds, isBreathSetActive } from "utils";
 
 const MemoizedBreathing = memo(Breathing);
 
@@ -13,6 +15,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
   onTimerCompleted,
   onStart,
   onConfig,
+  selectBreathSet,
 }) => {
   const currentElement = () => {
     switch (breathingState) {
@@ -50,7 +53,11 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
         );
 
       case "breathing":
-        return <MemoizedBreathing breathings={breathings} />;
+        return (
+          <MemoizedBreathing
+            breathings={BreathAnimationToMilliseconds(breathings)}
+          />
+        );
 
       default:
         return <Flex>state not found</Flex>;
@@ -63,15 +70,23 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
         size: "100%",
         position: "relative",
         flexDirection: "column",
+        justifyContent: "flex-end",
+        alignItems: "center",
       }}
     >
       <TopMenu onConfig={onConfig} />
-      <Flex sx={{ width: "100%", justifyContent: "center" }}>
+      <Flex
+        sx={{
+          width: ["100%", "500px", "550px", "600px"],
+          maxWidth: "100%",
+          px: [3, 4],
+          py: 3,
+        }}
+      >
         <Flex
           sx={{
-            size: [6, 7, 8, 9],
-            aspectRatio: "1/1",
-            p: 3,
+            width: "100%",
+            aspectRatio: "auto 1 / 1",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -79,8 +94,27 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
           {currentElement()}
         </Flex>
       </Flex>
-      <Flex sx={{ maxWidth: 10, margin: "0 auto", width: "100%" }}>
-        <BreathingsItem times={[3000, 2000, 3000, 4000]} />
+      <Flex
+        sx={{
+          width: 9,
+          maxWidth: "100%",
+          height: "100%",
+          overflow: "auto",
+          flexDirection: "column",
+          p: [3, 4],
+        }}
+      >
+        <Heading sx={{ my: [3, 4], fontSize: [4, 5] }}>Recomendaciones</Heading>
+        <Flex sx={{ flexDirection: "column", gap: 3 }}>
+          {PRE_SETS.map((breathSet) => (
+            <BreathSetItem
+              active={isBreathSetActive(breathSet, breathings)}
+              onSelect={selectBreathSet}
+              key={breathSet.title}
+              set={breathSet}
+            />
+          ))}
+        </Flex>
       </Flex>
     </Flex>
   );

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { updateBreathings, RootState, setRightMenuState } from "store";
+import { updateSingleBreathing, RootState, setRightMenuState } from "store";
 import { RightSideMenu } from "components";
 
 export const BreathingControl: React.FC = () => {
@@ -9,7 +9,7 @@ export const BreathingControl: React.FC = () => {
   const dispatch = useDispatch();
 
   const updateHandler = (index: number, duration: number) => {
-    dispatch(updateBreathings({ duration, index }));
+    dispatch(updateSingleBreathing({ duration, index }));
   };
 
   const onCloseHandler = () => {

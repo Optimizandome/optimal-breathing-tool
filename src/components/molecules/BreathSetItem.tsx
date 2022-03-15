@@ -3,15 +3,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWaveSquare } from "@fortawesome/free-solid-svg-icons";
 
 import { BreathingsPreview } from "components/atoms";
-import { BreathingsItemProps } from "./BreathingsItem.def";
+import { BreathingsItemProps } from "./BreathSetItem.def";
 
-export const BreathingsItem: React.FC<BreathingsItemProps> = ({ times }) => {
+export const BreathSetItem: React.FC<BreathingsItemProps> = ({
+  active,
+  onSelect,
+  set,
+}) => {
   return (
     <Flex
+      onClick={() => onSelect(set)}
       sx={{
         width: "100%",
-        height: "66px",
-        bg: "white",
+        height: ["60px", "66px"],
+        bg: active ? "white" : "background",
+        border: active ? "none" : "1px solid",
+        opacity: active ? 1 : 0.8,
+        borderColor: "muted",
         borderRadius: 2,
         alignItems: "center",
         px: 3,
@@ -34,14 +42,14 @@ export const BreathingsItem: React.FC<BreathingsItemProps> = ({ times }) => {
         <FontAwesomeIcon icon={faWaveSquare} />
       </Box>
       <Flex sx={{ flexDirection: "column", flex: 1, px: 3 }}>
-        <Heading as="h4" sx={{ fontSize: 4, lineHeight: 2 }}>
-          Square
+        <Heading as="h4" sx={{ fontSize: [3, 4], lineHeight: 2 }}>
+          {set.title}
         </Heading>
-        <Text sx={{ fontSize: 2, lineHeight: 0, color: "gray" }}>
-          Lorem Ipsum is simply dummy text of the printing{" "}
+        <Text sx={{ fontSize: [1, 2], lineHeight: 0, color: "gray" }}>
+          {set.text}
         </Text>
       </Flex>
-      <BreathingsPreview times={times} />
+      <BreathingsPreview times={set.breaths} />
     </Flex>
   );
 };

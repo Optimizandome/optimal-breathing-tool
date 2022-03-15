@@ -1,5 +1,4 @@
 import { Box, Flex, Heading, Text } from "theme-ui";
-import { breathingToSeconds } from "utils";
 
 import { Range } from "../atoms/Range";
 import { BreathingConfigProps } from "./BreathingConfig.def";
@@ -30,7 +29,7 @@ export const BreathingConfig: React.FC<BreathingConfigProps> = ({
           <Range
             color={config.color}
             min={config.min}
-            value={breathingToSeconds(currentBreathings[index])}
+            value={currentBreathings[index].duration}
             onChange={(e) => {
               onUpdateBreathing?.(index, Number(e.target.value));
             }}
@@ -38,7 +37,7 @@ export const BreathingConfig: React.FC<BreathingConfigProps> = ({
           <Box>
             <Heading as="h3">{config.label}</Heading>
             <Text sx={{ color: "gray", fontSize: 2 }}>
-              {breathingToSeconds(currentBreathings[index])} seg
+              {currentBreathings[index].duration} seg
             </Text>
           </Box>
         </Flex>

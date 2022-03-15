@@ -8,8 +8,8 @@ export const TopMenu: React.FC<TopMenuProps> = ({ onConfig }) => {
   return (
     <Flex
       sx={{
-        height: [4, 5],
         width: "100%",
+        py: [3, 4],
         position: "relative",
         justifyContent: "center",
         alignItems: "center",

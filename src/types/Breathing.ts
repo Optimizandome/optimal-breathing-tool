@@ -6,3 +6,9 @@ export type BreathingAnimation = {
   label: string;
   color: string;
 };
+
+export type BreathsSet = {
+  title: string;
+  text: string;
+  breaths: [number, number, number, number];
+};

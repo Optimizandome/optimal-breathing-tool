@@ -82,6 +82,8 @@ const extractDelayAndDuration = ({
   }
 };
 
+// duration in milliseconds
+
 export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
   const [toggle, setToggle] = useState(false);
   const breathingsSize = breathings.length;

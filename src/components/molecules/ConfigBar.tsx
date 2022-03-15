@@ -8,7 +8,7 @@ export const ConfigBar: React.FC<ConfigBarProps> = ({ onClose }) => {
   return (
     <Flex
       sx={{
-        height: [4, 5],
+        py: [3, 4],
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
