@@ -4,10 +4,10 @@ import { Range } from "../atoms/Range";
 import { BreathingConfigProps } from "./BreathingConfig.def";
 
 const configArr = [
-  { label: "Inhale", min: 1, color: "secondary" },
-  { label: "Hold", min: 0, color: "primary" },
-  { label: "Exhale", min: 1, color: "secondary" },
-  { label: "Hold", min: 0, color: "primary" },
+  { label: "Inhalar", min: 1, color: "secondary" },
+  { label: "Retener", min: 0, color: "primary" },
+  { label: "Exhalar", min: 1, color: "secondary" },
+  { label: "Retener", min: 0, color: "primary" },
 ] as const;
 
 export const BreathingConfig: React.FC<BreathingConfigProps> = ({
@@ -35,9 +35,11 @@ export const BreathingConfig: React.FC<BreathingConfigProps> = ({
             }}
           />
           <Box>
-            <Heading as="h3">{config.label}</Heading>
+            <Heading as="h3" sx={{ fontSize: [3, 4] }}>
+              {config.label}
+            </Heading>
             <Text sx={{ color: "gray", fontSize: 2 }}>
-              {currentBreathings[index].duration} seg
+              {currentBreathings[index].duration} segs
             </Text>
           </Box>
         </Flex>

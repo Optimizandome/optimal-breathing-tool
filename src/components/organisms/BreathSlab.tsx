@@ -27,13 +27,13 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
               size: "60%",
               bg: "primary",
               borderRadius: "50%",
-              fontSize: [6, 7, 8, 9],
+              fontSize: [5, 6, 7, 8],
               fontWeight: "bold",
               cursor: "pointer",
               color: "white",
             }}
           >
-            Start
+            Empezar
           </Button>
         );
 
@@ -104,7 +104,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
           p: [3, 4],
         }}
       >
-        <Heading sx={{ my: [3, 4], fontSize: [4, 5] }}>Recomendaciones</Heading>
+        <Heading sx={{ my: [3, 4], fontSize: [4, 5] }}>Recomendados:</Heading>
         <Flex sx={{ flexDirection: "column", gap: 3 }}>
           {PRE_SETS.map((breathSet) => (
             <BreathSetItem

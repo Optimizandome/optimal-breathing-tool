@@ -15,7 +15,7 @@ export const TopMenu: React.FC<TopMenuProps> = ({ onConfig }) => {
         alignItems: "center",
       }}
     >
-      <Heading sx={{ fontSize: [5, 6] }}>Optimal Breathing</Heading>
+      <Heading sx={{ fontSize: [5, 6] }}>Samay</Heading>
       <Box
         onClick={onConfig}
         sx={{
