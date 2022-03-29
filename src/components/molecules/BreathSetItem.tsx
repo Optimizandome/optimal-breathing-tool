@@ -6,7 +6,7 @@ import { BreathingsPreview } from "components/atoms";
 import { BreathingsItemProps } from "./BreathSetItem.def";
 
 const breathingsTimes = (breaths: [number, number, number, number]) =>
-  breaths.map((b) => `${b} segs`).join(", ");
+  breaths.map((b) => `${b}`).join("-");
 
 export const BreathSetItem: React.FC<BreathingsItemProps> = ({
   active,
@@ -49,7 +49,7 @@ export const BreathSetItem: React.FC<BreathingsItemProps> = ({
           {set.title}
         </Heading>
         <Text sx={{ fontSize: [1, 2], lineHeight: 0, color: "gray" }}>
-          Tiempos: {breathingsTimes(set.breaths)}
+          Tempo: {breathingsTimes(set.breaths)}
         </Text>
       </Flex>
       <BreathingsPreview times={set.breaths} />
