@@ -1,6 +1,7 @@
+import { Countdown } from "components/atoms";
 import { useState, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
-import { Flex, Text } from "theme-ui";
+import { Box, Flex, Text } from "theme-ui";
 
 import { BreathingAnimation } from "types";
 import { BreathingProps } from "./Breathing.def";
@@ -118,6 +119,11 @@ export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
         position: "relative",
       }}
     >
+      <Box sx={{ position: "absolute", left: 0, top: 0, p: 1 }}>
+        {breathings[index].duration > 0 && (
+          <Countdown initialTime={breathings[index].duration} />
+        )}
+      </Box>
       <animated.div
         style={{
           width: "100%",

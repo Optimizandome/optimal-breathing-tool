@@ -5,6 +5,9 @@ import { faWaveSquare } from "@fortawesome/free-solid-svg-icons";
 import { BreathingsPreview } from "components/atoms";
 import { BreathingsItemProps } from "./BreathSetItem.def";
 
+const breathingsTimes = (breaths: [number, number, number, number]) =>
+  breaths.map((b) => `${b} segs`).join(", ");
+
 export const BreathSetItem: React.FC<BreathingsItemProps> = ({
   active,
   onSelect,
@@ -46,7 +49,7 @@ export const BreathSetItem: React.FC<BreathingsItemProps> = ({
           {set.title}
         </Heading>
         <Text sx={{ fontSize: [1, 2], lineHeight: 0, color: "gray" }}>
-          {set.text}
+          Tiempos: {breathingsTimes(set.breaths)}
         </Text>
       </Flex>
       <BreathingsPreview times={set.breaths} />
