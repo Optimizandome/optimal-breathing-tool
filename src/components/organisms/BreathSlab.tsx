@@ -12,10 +12,12 @@ const MemoizedBreathing = memo(Breathing);
 export const BreathSlab: React.FC<BreathSlabProps> = ({
   breathingState,
   breathings,
+  showTimer,
   onTimerCompleted,
   onStart,
   onConfig,
   selectBreathSet,
+  onTempoChange,
 }) => {
   const currentElement = () => {
     switch (breathingState) {
@@ -54,9 +56,13 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
 
       case "breathing":
         return (
-          <MemoizedBreathing
-            breathings={BreathAnimationToMilliseconds(breathings)}
-          />
+          <>
+            <MemoizedBreathing
+              showTimer={showTimer}
+              onTempoChange={onTempoChange}
+              breathings={BreathAnimationToMilliseconds(breathings)}
+            />
+          </>
         );
 
       default:

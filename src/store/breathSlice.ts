@@ -9,6 +9,13 @@ export type BreathState = {
     BreathingAnimation,
     BreathingAnimation
   ];
+  config: {
+    indicators: {
+      withSound: boolean;
+      withTimer: boolean;
+      withVibration: boolean;
+    };
+  };
 };
 
 const initialState: BreathState = {
@@ -38,6 +45,13 @@ const initialState: BreathState = {
       color: "#5C6BC0",
     },
   ],
+  config: {
+    indicators: {
+      withSound: true,
+      withTimer: true,
+      withVibration: false,
+    },
+  },
 };
 
 export const breathingSlice = createSlice({
@@ -63,10 +77,27 @@ export const breathingSlice = createSlice({
         duration: times[index],
       })) as BreathState["breathings"];
     },
+    updateIndicators: (
+      state,
+      action: PayloadAction<BreathState["config"]["indicators"]>
+    ) => {
+      state.config.indicators = action.payload;
+    },
+    toggleIndicator: (
+      state,
+      action: PayloadAction<keyof BreathState["config"]["indicators"]>
+    ) => {
+      state.config.indicators[action.payload] =
+        !state.config.indicators[action.payload];
+    },
   },
 });
 
-export const { updateSingleBreathing, updateBreathings } =
-  breathingSlice.actions;
+export const {
+  updateSingleBreathing,
+  updateBreathings,
+  updateIndicators,
+  toggleIndicator,
+} = breathingSlice.actions;
 
 export const breathingReducer = breathingSlice.reducer;

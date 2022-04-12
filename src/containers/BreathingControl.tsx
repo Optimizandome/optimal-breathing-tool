@@ -1,10 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { updateSingleBreathing, RootState, setRightMenuState } from "store";
+import {
+  updateSingleBreathing,
+  RootState,
+  setRightMenuState,
+  toggleIndicator,
+} from "store";
 import { RightSideMenu } from "components";
 
 export const BreathingControl: React.FC = () => {
-  const breathings = useSelector((state: RootState) => state.breath.breathings);
+  const {
+    breathings,
+    config: { indicators },
+  } = useSelector((state: RootState) => state.breath);
 
   const dispatch = useDispatch();
 
@@ -22,6 +30,10 @@ export const BreathingControl: React.FC = () => {
         onClose={onCloseHandler}
         onUpdateBreathing={updateHandler}
         currentBreathings={breathings}
+        indicators={indicators}
+        onToggleIndicator={(indicator) => {
+          dispatch(toggleIndicator(indicator));
+        }}
       />
     </>
   );

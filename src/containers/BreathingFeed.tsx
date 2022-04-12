@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSound } from "use-sound";
+import debounce from "lodash.debounce";
 
 import { RootState, setRightMenuState, updateBreathings } from "store";
 import { BreathsSet } from "types";
 import { BreathSlab } from "components";
 import { BreathState } from "components/organisms/BreathSlab.def";
+import changeStateSound from "assets/sounds/bells.mp3";
 
 export const BreathingFeed: React.FC = () => {
-  const breathings = useSelector((state: RootState) => state.breath.breathings);
+  const {
+    breathings,
+    config: {
+      indicators: { withSound, withVibration, withTimer },
+    },
+  } = useSelector((state: RootState) => state.breath);
   const isRightMenuOpen = useSelector(
     (state: RootState) => state.layout.isRightMenuOpen
   );
@@ -16,6 +24,8 @@ export const BreathingFeed: React.FC = () => {
     useState<BreathState>("standBy");
 
   const dispatch = useDispatch();
+
+  const [playChangeStateSound] = useSound(changeStateSound);
 
   const onTimerCompletedHandler = () => {
     setCurrentBreathingState("breathing");
@@ -34,9 +44,17 @@ export const BreathingFeed: React.FC = () => {
     dispatch(setRightMenuState(!isRightMenuOpen));
   };
 
+  const onTempoChangeHandler = () => {
+    if (window.navigator.vibrate && withVibration)
+      window.navigator.vibrate(300);
+    withSound && playChangeStateSound();
+  };
+
+  const debouncedTempoChange = debounce(onTempoChangeHandler, 50);
+
   useEffect(() => {
     setCurrentBreathingState("standBy");
-  }, [breathings]);
+  }, [breathings, withSound, withVibration, withTimer]);
 
   return (
     <>
@@ -47,6 +65,8 @@ export const BreathingFeed: React.FC = () => {
         onStart={onStartHandler}
         onConfig={onConfigHandler}
         selectBreathSet={onSelectBreathSetHandler}
+        onTempoChange={debouncedTempoChange}
+        showTimer={withTimer}
       />
     </>
   );

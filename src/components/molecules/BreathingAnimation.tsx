@@ -4,7 +4,7 @@ import { animated, useSpring } from "react-spring";
 import { Box, Flex, Text } from "theme-ui";
 
 import { BreathingAnimation } from "types";
-import { BreathingProps } from "./Breathing.def";
+import { BreathingProps } from "./BreathingAnimation.def";
 
 const extractDelayAndDuration = ({
   currentState,
@@ -84,8 +84,11 @@ const extractDelayAndDuration = ({
 };
 
 // duration in milliseconds
-
-export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
+export const Breathing: React.FC<BreathingProps> = ({
+  breathings = [],
+  showTimer,
+  onTempoChange,
+}) => {
   const [toggle, setToggle] = useState(false);
   const breathingsSize = breathings.length;
   const [index, setIndex] = useState(0);
@@ -100,6 +103,7 @@ export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
     onRest: () => {
       setIndex((prev) => {
         const next = (prev + 1) % breathingsSize;
+        onTempoChange?.(next);
         return next;
       });
       setToggle(!toggle);
@@ -119,8 +123,8 @@ export const Breathing: React.FC<BreathingProps> = ({ breathings = [] }) => {
         position: "relative",
       }}
     >
-      <Box sx={{ position: "absolute", left: 0, top: 0, p: 1 }}>
-        {breathings[index].duration > 0 && (
+      <Box sx={{ position: "absolute", left: 0, top: -20, p: 1 }}>
+        {breathings[index].duration > 0 && showTimer && (
           <Countdown initialTime={breathings[index].duration} />
         )}
       </Box>
