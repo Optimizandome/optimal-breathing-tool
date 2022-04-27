@@ -123,9 +123,9 @@ export const Breathing: React.FC<BreathingProps> = ({
         position: "relative",
       }}
     >
-      <Box sx={{ position: "absolute", left: 0, top: -20, p: 1 }}>
+      <Box sx={{ position: "absolute", top: "-20px", p: 1 }}>
         {breathings[index].duration > 0 && showTimer && (
-          <Countdown initialTime={breathings[index].duration} />
+          <Countdown initialTime={breathings[index].duration} showTotal />
         )}
       </Box>
       <animated.div

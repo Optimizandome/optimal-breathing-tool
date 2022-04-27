@@ -1,7 +1,7 @@
-import { BreathsSet } from "types";
+import { BreathProtocol } from "types";
 
 export type BreathingsItemProps = {
   active: boolean;
-  onSelect: (set: BreathsSet) => void;
-  set: BreathsSet;
+  onSelect: (set: BreathProtocol) => void;
+  set: BreathProtocol;
 };

@@ -12,7 +12,7 @@ export const Range: React.FC<RangeProps> = ({
     color === "primary"
       ? `rgb(19, 47, 68, ${(value + 2) / 30})`
       : `rgb(245, 127, 1, ${(value + 2) / 30})`;
-  const height = "300px";
+  const height = ["180px", "220px", "300px"];
   const width = "12px";
   return (
     <Flex

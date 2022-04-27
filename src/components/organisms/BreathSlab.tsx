@@ -1,18 +1,21 @@
 import { memo } from "react";
-import { Button, Flex, Heading } from "theme-ui";
+import { Box, Button, Flex, Heading } from "theme-ui";
 
-import { Timer } from "components/atoms";
+import { Countdown, Timer } from "components/atoms";
 import { BreathSlabProps } from "./BreathSlab.def";
 import { Breathing, BreathSetItem, TopMenu } from "components/molecules";
-import { PRE_SETS } from "constants/config";
+import { FIXED_PROTOCOLS } from "constants/config";
 import { BreathAnimationToMilliseconds, isBreathSetActive } from "utils";
 
 const MemoizedBreathing = memo(Breathing);
+const MemoizedCountdown = memo(Countdown);
 
 export const BreathSlab: React.FC<BreathSlabProps> = ({
   breathingState,
   breathings,
   showTimer,
+  practiceDuration,
+  onCompletePractice,
   onTimerCompleted,
   onStart,
   onConfig,
@@ -83,8 +86,11 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
       <TopMenu onConfig={onConfig} />
       <Flex
         sx={{
+          position: "relative",
           width: ["100%", "500px", "550px", "600px"],
           maxWidth: "100%",
+          flexDirection: "column",
+          alignItems: "center",
           px: [3, 4],
           py: 3,
         }}
@@ -98,6 +104,14 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
           }}
         >
           {currentElement()}
+          {breathingState === "breathing" && (
+            <Box sx={{ position: "absolute", bottom: "2px" }}>
+              <MemoizedCountdown
+                initialTime={practiceDuration * 1000}
+                onComplete={onCompletePractice}
+              />
+            </Box>
+          )}
         </Flex>
       </Flex>
       <Flex
@@ -112,7 +126,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
       >
         <Heading sx={{ my: [3, 4], fontSize: [4, 5] }}>Recomendados:</Heading>
         <Flex sx={{ flexDirection: "column", gap: 3 }}>
-          {PRE_SETS.map((breathSet) => (
+          {FIXED_PROTOCOLS.map((breathSet) => (
             <BreathSetItem
               active={isBreathSetActive(breathSet, breathings)}
               onSelect={selectBreathSet}

@@ -1,4 +1,4 @@
-import { BreathingAnimation, BreathsSet } from "types";
+import { BreathingAnimation, BreathProtocol } from "types";
 
 export const BreathAnimationToMilliseconds = (
   breathings: BreathingAnimation[]
@@ -12,7 +12,7 @@ export const BreathAnimationToMilliseconds = (
 };
 
 export const isBreathSetActive = (
-  set: BreathsSet,
+  set: BreathProtocol,
   breathings: BreathingAnimation[]
 ): boolean => {
   const setTimes = set.breaths;
@@ -23,3 +23,17 @@ export const isBreathSetActive = (
 
   return true;
 };
+
+export const getActiveProtocol = (
+  sets: BreathProtocol[],
+  currentBreathings: BreathingAnimation[]
+) => {
+  for (const set of sets) {
+    if (isBreathSetActive(set, currentBreathings)) {
+      return set;
+    }
+  }
+  return null;
+};
+
+export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));

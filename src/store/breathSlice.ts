@@ -10,6 +10,10 @@ export type BreathState = {
     BreathingAnimation
   ];
   config: {
+    duration: {
+      minutes: number;
+      seconds: number;
+    };
     indicators: {
       withSound: boolean;
       withTimer: boolean;
@@ -46,6 +50,10 @@ const initialState: BreathState = {
     },
   ],
   config: {
+    duration: {
+      minutes: 1,
+      seconds: 0,
+    },
     indicators: {
       withSound: true,
       withTimer: true,
@@ -90,6 +98,15 @@ export const breathingSlice = createSlice({
       state.config.indicators[action.payload] =
         !state.config.indicators[action.payload];
     },
+    updateDuration: (
+      state,
+      action: PayloadAction<Partial<BreathState["config"]["duration"]>>
+    ) => {
+      state.config.duration = {
+        ...state.config.duration,
+        ...action.payload,
+      };
+    },
   },
 });
 
@@ -98,6 +115,7 @@ export const {
   updateBreathings,
   updateIndicators,
   toggleIndicator,
+  updateDuration,
 } = breathingSlice.actions;
 
 export const breathingReducer = breathingSlice.reducer;

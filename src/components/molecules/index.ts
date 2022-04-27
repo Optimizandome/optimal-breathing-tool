@@ -4,3 +4,6 @@ export * from "./TopMenu";
 export * from "./ConfigBar";
 export * from "./BreathSetItem";
 export * from "./IndicatorsMenu";
+export * from "./DurationMenu";
+export * from "./ConfirmationDialog";
+export * from "./SuccessPracticeDialog";

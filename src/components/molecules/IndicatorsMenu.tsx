@@ -11,7 +11,7 @@ export const IndicatorsMenu: React.FC<IndicatorsMenuProps> = ({
       sx={{
         justifyContent: "space-between",
         alignItems: "center",
-        py: 3,
+        py: [2, 3],
       }}
     >
       <Label sx={{ flex: 1 }}>Contador</Label>
@@ -32,7 +32,7 @@ export const IndicatorsMenu: React.FC<IndicatorsMenuProps> = ({
       sx={{
         justifyContent: "space-between",
         alignItems: "center",
-        py: 3,
+        py: [2, 3],
       }}
     >
       <Label sx={{ flex: 1 }}>Sonido</Label>
@@ -53,7 +53,7 @@ export const IndicatorsMenu: React.FC<IndicatorsMenuProps> = ({
       sx={{
         justifyContent: "space-between",
         alignItems: "center",
-        py: 3,
+        py: [2, 3],
       }}
     >
       <Label sx={{ flex: 1 }}>Vibración</Label>

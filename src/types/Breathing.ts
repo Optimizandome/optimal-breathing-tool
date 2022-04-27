@@ -7,7 +7,8 @@ export type BreathingAnimation = {
   color: string;
 };
 
-export type BreathsSet = {
+export type BreathProtocol = {
+  id: string;
   title: string;
   text: string;
   breaths: [number, number, number, number];
