@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/optimal-breathing-tool/static/css/main.abde9a77.css",
-    "main.js": "/optimal-breathing-tool/static/js/main.e3e8903c.js",
-    "static/js/845.7da37d42.chunk.js": "/optimal-breathing-tool/static/js/845.7da37d42.chunk.js",
-    "static/js/787.394db678.chunk.js": "/optimal-breathing-tool/static/js/787.394db678.chunk.js",
+    "main.css": "/optimal-breathing-tool/static/css/main.8fec3016.css",
+    "main.js": "/optimal-breathing-tool/static/js/main.eae4d813.js",
+    "static/js/918.3e9e57b9.chunk.js": "/optimal-breathing-tool/static/js/918.3e9e57b9.chunk.js",
+    "static/js/415.5110275c.chunk.js": "/optimal-breathing-tool/static/js/415.5110275c.chunk.js",
     "static/media/bells.mp3": "/optimal-breathing-tool/static/media/bells.7e6c69dced26357e1a27.mp3",
     "service-worker.js": "/optimal-breathing-tool/service-worker.js",
     "index.html": "/optimal-breathing-tool/index.html",
-    "main.e3e8903c.js.map": "/optimal-breathing-tool/static/js/main.e3e8903c.js.map",
-    "845.7da37d42.chunk.js.map": "/optimal-breathing-tool/static/js/845.7da37d42.chunk.js.map",
-    "787.394db678.chunk.js.map": "/optimal-breathing-tool/static/js/787.394db678.chunk.js.map"
+    "main.8fec3016.css.map": "/optimal-breathing-tool/static/css/main.8fec3016.css.map",
+    "main.eae4d813.js.map": "/optimal-breathing-tool/static/js/main.eae4d813.js.map",
+    "918.3e9e57b9.chunk.js.map": "/optimal-breathing-tool/static/js/918.3e9e57b9.chunk.js.map",
+    "415.5110275c.chunk.js.map": "/optimal-breathing-tool/static/js/415.5110275c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.abde9a77.css",
-    "static/js/main.e3e8903c.js"
+    "static/css/main.8fec3016.css",
+    "static/js/main.eae4d813.js"
   ]
 }
