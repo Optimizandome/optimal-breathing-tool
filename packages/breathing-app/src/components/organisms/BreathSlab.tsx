@@ -21,6 +21,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
   onConfig,
   selectBreathSet,
   onTempoChange,
+  onShowInformation,
 }) => {
   const currentElement = () => {
     switch (breathingState) {
@@ -128,6 +129,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
         <Flex sx={{ flexDirection: "column", gap: 3 }}>
           {FIXED_PROTOCOLS.map((breathSet) => (
             <BreathSetItem
+              onShowInformation={onShowInformation}
               active={isBreathSetActive(breathSet, breathings)}
               onSelect={selectBreathSet}
               key={breathSet.title}

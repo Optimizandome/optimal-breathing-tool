@@ -13,6 +13,7 @@ import { BreathProtocol } from "types";
 import {
   BreathSlab,
   ConfirmationDialog,
+  ProtocolInformation,
   SuccessPracticeDialog,
 } from "components";
 import { BreathState } from "components/organisms/BreathSlab.def";
@@ -103,6 +104,19 @@ export const BreathingFeed: React.FC = () => {
 
   const debouncedTempoChange = debounce(onTempoChangeHandler, 50);
 
+  const showInformationHandler = (info: BreathProtocol) => {
+    confirmAlert({
+      customUI: ({ onClose }) => (
+        <ProtocolInformation
+          onClose={() => {
+            onClose();
+          }}
+          protocol={info}
+        />
+      ),
+    });
+  };
+
   useEffect(() => {
     setCurrentBreathingState("standBy");
 
@@ -158,6 +172,7 @@ export const BreathingFeed: React.FC = () => {
         showTimer={withTimer}
         practiceDuration={minutes * 60 + seconds}
         onCompletePractice={onCompletePracticeHandler}
+        onShowInformation={showInformationHandler}
       />
     </>
   );

@@ -13,4 +13,5 @@ export type BreathSlabProps = {
   onConfig: () => void;
   selectBreathSet: (set: BreathProtocol) => void;
   onTempoChange: (index: number) => void;
+  onShowInformation: (set: BreathProtocol) => void;
 };

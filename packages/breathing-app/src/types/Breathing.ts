@@ -10,6 +10,9 @@ export type BreathingAnimation = {
 export type BreathProtocol = {
   id: string;
   title: string;
+  image: any;
   text: string;
+  usedTo: string[];
+  indications: string[];
   breaths: [number, number, number, number];
 };

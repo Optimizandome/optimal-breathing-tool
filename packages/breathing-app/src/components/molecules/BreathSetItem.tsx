@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text } from "theme-ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWaveSquare } from "@fortawesome/free-solid-svg-icons";
+import { faWaveSquare, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 import { BreathingsPreview } from "components/atoms";
 import { BreathingsItemProps } from "./BreathSetItem.def";
@@ -12,6 +12,7 @@ export const BreathSetItem: React.FC<BreathingsItemProps> = ({
   active,
   onSelect,
   set,
+  onShowInformation,
 }) => {
   return (
     <Flex
@@ -47,6 +48,15 @@ export const BreathSetItem: React.FC<BreathingsItemProps> = ({
       <Flex sx={{ flexDirection: "column", flex: 1, px: 3 }}>
         <Heading as="h4" sx={{ fontSize: [3, 4], lineHeight: 2 }}>
           {set.title}
+          <Text
+            onClick={(e) => {
+              e.stopPropagation();
+              onShowInformation(set);
+            }}
+            sx={{ color: "GrayText", ml: 3, "&:hover": { color: "primary" } }}
+          >
+            <FontAwesomeIcon icon={faCircleInfo} size="sm" />
+          </Text>
         </Heading>
         <Text sx={{ fontSize: [1, 2], lineHeight: 0, color: "gray" }}>
           Tempo: {breathingsTimes(set.breaths)}

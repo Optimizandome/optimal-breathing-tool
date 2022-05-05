@@ -4,4 +4,5 @@ export type BreathingsItemProps = {
   active: boolean;
   onSelect: (set: BreathProtocol) => void;
   set: BreathProtocol;
+  onShowInformation: (set: BreathProtocol) => void;
 };
