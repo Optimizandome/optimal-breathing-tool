@@ -47,7 +47,7 @@ export const ProtocolInformation: React.FC<PRotocolInfoProps> = ({
       <Image
         src={protocol.image}
         alt={protocol.title}
-        sx={{ size: [6, 8], margin: "0 auto" }}
+        sx={{ size: [6, 7], margin: "0 auto" }}
       />
       <Text sx={{ my: 3, fontWeight: "bold" }}>
         Utiliza este protocolo para:

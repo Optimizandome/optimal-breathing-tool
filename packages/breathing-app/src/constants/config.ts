@@ -18,7 +18,7 @@ export const FIXED_PROTOCOLS: BreathProtocol[] = [
   {
     id: "caja",
     title: "Caja",
-    image: require("assets/images/balanced.png"),
+    image: require("assets/images/square.png"),
     text: "...",
     usedTo: [
       "Calmar el cuerpo y la mente",
