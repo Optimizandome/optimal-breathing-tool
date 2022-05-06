@@ -13,7 +13,7 @@ export const FIXED_PROTOCOLS: BreathProtocol[] = [
       "Al meditar",
     ],
     indications: ["Respira solo por la nariz y diafragmáticamente"],
-    breaths: [1, 0, 1, 0],
+    breaths: [4, 0, 4, 0],
   },
   {
     id: "caja",
@@ -31,7 +31,7 @@ export const FIXED_PROTOCOLS: BreathProtocol[] = [
       "Respira solo por la nariz y diafragmáticamente",
       "Enfócate en completar las 4 esquinas de la caja",
     ],
-    breaths: [1, 1, 1, 1],
+    breaths: [4, 4, 4, 4],
   },
   {
     id: "triangulo",
@@ -47,7 +47,7 @@ export const FIXED_PROTOCOLS: BreathProtocol[] = [
       "Respira solo por la nariz y diafragmáticamente",
       "Relaja el rostro, cuello y cuerpo en la retención",
     ],
-    breaths: [1, 2, 1, 0],
+    breaths: [4, 8, 4, 0],
   },
   {
     id: "triangulo_invertido",
@@ -63,6 +63,6 @@ export const FIXED_PROTOCOLS: BreathProtocol[] = [
       "Respira solo por la nariz y diafragmáticamente",
       "Relaja tu mente durante la retención",
     ],
-    breaths: [1, 0, 1, 2],
+    breaths: [4, 0, 4, 8],
   },
 ];
