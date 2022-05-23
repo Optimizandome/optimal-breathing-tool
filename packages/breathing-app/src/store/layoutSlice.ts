@@ -12,7 +12,7 @@ export const layoutSlice = createSlice({
   name: "layout",
   initialState,
   reducers: {
-    setRightMenuState: (state, action: PayloadAction<boolean>) => {
+    setRightMenuState: (state: LayoutState, action: PayloadAction<boolean>) => {
       state.isRightMenuOpen = action.payload;
     },
   },

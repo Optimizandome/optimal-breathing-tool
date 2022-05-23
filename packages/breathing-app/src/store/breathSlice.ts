@@ -67,7 +67,7 @@ export const breathingSlice = createSlice({
   initialState,
   reducers: {
     updateSingleBreathing: (
-      state,
+      state: BreathState,
       action: PayloadAction<{ duration: number; index: number }>
     ) => {
       const { duration, index } = action.payload;
@@ -76,7 +76,7 @@ export const breathingSlice = createSlice({
       ) as BreathState["breathings"];
     },
     updateBreathings: (
-      state,
+      state: BreathState,
       action: PayloadAction<{ times: [number, number, number, number] }>
     ) => {
       const { times } = action.payload;
@@ -86,20 +86,20 @@ export const breathingSlice = createSlice({
       })) as BreathState["breathings"];
     },
     updateIndicators: (
-      state,
+      state: BreathState,
       action: PayloadAction<BreathState["config"]["indicators"]>
     ) => {
       state.config.indicators = action.payload;
     },
     toggleIndicator: (
-      state,
+      state: BreathState,
       action: PayloadAction<keyof BreathState["config"]["indicators"]>
     ) => {
       state.config.indicators[action.payload] =
         !state.config.indicators[action.payload];
     },
     updateDuration: (
-      state,
+      state: BreathState,
       action: PayloadAction<Partial<BreathState["config"]["duration"]>>
     ) => {
       state.config.duration = {

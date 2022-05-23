@@ -17,10 +17,13 @@ import {
   SuccessPracticeDialog,
 } from "components";
 import { BreathState } from "components/organisms/BreathSlab.def";
-import changeStateSound from "assets/sounds/bells.mp3";
 import { FIXED_PROTOCOLS } from "constants/config";
 import { delay, getActiveProtocol } from "utils";
 import celebration from "assets/animation/celebration.json";
+import changeStateSound from "assets/sounds/bells.mp3";
+import exhaleSound from "assets/sounds/female-exhala.mp3";
+import inhaleSound from "assets/sounds/female-inhala.mp3";
+import holdSound from "assets/sounds/female-retiene.mp3";
 
 export const BreathingFeed: React.FC = () => {
   const {
@@ -44,12 +47,22 @@ export const BreathingFeed: React.FC = () => {
 
   const isPracticing = currentBreathingState === "breathing";
 
+  const totalTime = minutes * 60 + seconds;
+
   const dispatch = useDispatch();
 
-  const [playChangeStateSound] = useSound(changeStateSound);
+  const [playExhaleStateSound] = useSound(exhaleSound, { interrupt: true });
+  const [playInhaleStateSound] = useSound(inhaleSound, { interrupt: true });
+  const [playHoldStateSound] = useSound(holdSound, { interrupt: true });
+  const [playChangeStateSound] = useSound(changeStateSound, {
+    interrupt: true,
+  });
 
   const onTimerCompletedHandler = () => {
     setCurrentBreathingState("breathing");
+    // default start
+    playChangeStateSound();
+    playInhaleStateSound();
   };
 
   const onStartHandler = () => {
@@ -85,13 +98,38 @@ export const BreathingFeed: React.FC = () => {
     }
   };
 
-  const onTempoChangeHandler = () => {
+  const onTempoChangeHandler = (index: number) => {
+    console.log("index change", index);
     if (window.navigator.vibrate && withVibration)
       window.navigator.vibrate(300);
-    withSound && playChangeStateSound();
+
+    if (
+      withSound &&
+      !showCelebration &&
+      currentBreathingState === "breathing"
+    ) {
+      switch (index) {
+        case 0:
+          playInhaleStateSound();
+          break;
+        case 1:
+          playHoldStateSound();
+          break;
+        case 2:
+          playExhaleStateSound();
+          break;
+        case 3:
+          playHoldStateSound();
+          break;
+        default:
+          playExhaleStateSound();
+          break;
+      }
+    }
   };
 
   const onCompletePracticeHandler = async () => {
+    playChangeStateSound();
     setCurrentBreathingState("standBy");
     setShowCelebration(true);
     await delay(1200);
@@ -102,7 +140,7 @@ export const BreathingFeed: React.FC = () => {
     setShowCelebration(false);
   };
 
-  const debouncedTempoChange = debounce(onTempoChangeHandler, 50);
+  const debouncedTempoChange = debounce(onTempoChangeHandler, 80);
 
   const showInformationHandler = (info: BreathProtocol) => {
     confirmAlert({
@@ -170,7 +208,7 @@ export const BreathingFeed: React.FC = () => {
         selectBreathSet={onSelectBreathSetHandler}
         onTempoChange={debouncedTempoChange}
         showTimer={withTimer}
-        practiceDuration={minutes * 60 + seconds}
+        practiceDuration={totalTime}
         onCompletePractice={onCompletePracticeHandler}
         onShowInformation={showInformationHandler}
       />
