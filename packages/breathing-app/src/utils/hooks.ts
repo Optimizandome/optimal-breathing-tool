@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useStayAwake from "use-stay-awake";
 
 export const useTimer = (init: number, onComplete?: () => void) => {
   const [count, setCount] = useState(init);
@@ -30,4 +31,15 @@ export const useTimer = (init: number, onComplete?: () => void) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return { count, reset, togglePause };
+};
+
+export const useNoSleep = (isPracticing: boolean) => {
+  const device = useStayAwake();
+  useEffect(() => {
+    if (isPracticing) {
+      device.preventSleeping();
+    } else {
+      device.allowSleeping();
+    }
+  }, [isPracticing, device]);
 };

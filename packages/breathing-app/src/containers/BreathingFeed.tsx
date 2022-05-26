@@ -24,6 +24,7 @@ import changeStateSound from "assets/sounds/bells.mp3";
 import exhaleSound from "assets/sounds/female-exhala.mp3";
 import inhaleSound from "assets/sounds/female-inhala.mp3";
 import holdSound from "assets/sounds/female-retiene.mp3";
+import { useNoSleep } from "utils/hooks";
 
 export const BreathingFeed: React.FC = () => {
   const {
@@ -41,28 +42,43 @@ export const BreathingFeed: React.FC = () => {
   });
 
   const [showCelebration, setShowCelebration] = useState(false);
+  const [enabledTempoSounds, setEnabledTempoSounds] = useState(false);
 
   const [currentBreathingState, setCurrentBreathingState] =
     useState<BreathState>("standBy");
 
   const isPracticing = currentBreathingState === "breathing";
+  useNoSleep(isPracticing);
 
   const totalTime = minutes * 60 + seconds;
 
   const dispatch = useDispatch();
 
-  const [playExhaleStateSound] = useSound(exhaleSound, { interrupt: true });
-  const [playInhaleStateSound] = useSound(inhaleSound, { interrupt: true });
-  const [playHoldStateSound] = useSound(holdSound, { interrupt: true });
-  const [playChangeStateSound] = useSound(changeStateSound, {
+  const [playExhaleStateSound] = useSound(exhaleSound, {
+    interrupt: true,
+    soundEnabled: enabledTempoSounds,
+  });
+  const [playInhaleStateSound] = useSound(inhaleSound, {
+    interrupt: true,
+    soundEnabled: enabledTempoSounds,
+  });
+  const [playHoldStateSound] = useSound(holdSound, {
+    interrupt: true,
+    soundEnabled: enabledTempoSounds,
+  });
+  const [initPracticeSound] = useSound(inhaleSound, {
+    interrupt: true,
+  });
+  const [endPracticeSound] = useSound(changeStateSound, {
     interrupt: true,
   });
 
   const onTimerCompletedHandler = () => {
     setCurrentBreathingState("breathing");
+
     // default start
-    playChangeStateSound();
-    playInhaleStateSound();
+    setEnabledTempoSounds(true);
+    initPracticeSound();
   };
 
   const onStartHandler = () => {
@@ -99,7 +115,6 @@ export const BreathingFeed: React.FC = () => {
   };
 
   const onTempoChangeHandler = (index: number) => {
-    console.log("index change", index);
     if (window.navigator.vibrate && withVibration)
       window.navigator.vibrate(300);
 
@@ -129,7 +144,9 @@ export const BreathingFeed: React.FC = () => {
   };
 
   const onCompletePracticeHandler = async () => {
-    playChangeStateSound();
+    setEnabledTempoSounds(false);
+    await delay(80);
+    endPracticeSound();
     setCurrentBreathingState("standBy");
     setShowCelebration(true);
     await delay(1200);
