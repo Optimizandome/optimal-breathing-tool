@@ -40,8 +40,14 @@ export const BreathingControl: React.FC = () => {
   }, [duration, setQuery]);
 
   useEffect(() => {
-    if (query.mins && query.secs) {
-      dispatch(updateDuration({ minutes: query.mins, seconds: query.secs }));
+    const { mins, secs } = query;
+    if (
+      mins !== null &&
+      secs !== null &&
+      typeof mins !== "undefined" &&
+      typeof secs !== "undefined"
+    ) {
+      dispatch(updateDuration({ minutes: mins, seconds: secs }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
