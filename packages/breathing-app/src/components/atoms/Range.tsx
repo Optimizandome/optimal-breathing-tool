@@ -18,7 +18,7 @@ export const Range: React.FC<RangeProps> = ({
     <Flex
       sx={{
         position: "relative",
-        overlay: "hidden",
+        // overlay: "hidden",
         width: "20px",
         height: height,
         alignItems: "center",

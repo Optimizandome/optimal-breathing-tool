@@ -8,3 +8,4 @@ export * from "./DurationMenu";
 export * from "./ConfirmationDialog";
 export * from "./SuccessPracticeDialog";
 export * from "./ProtocolInformation";
+export * from "./LangSelector";

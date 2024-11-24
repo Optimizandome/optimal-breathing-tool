@@ -1,3 +1,4 @@
+// @ts-ignore
 import { memo } from "react";
 import { Box, Button, Flex, Heading } from "theme-ui";
 
@@ -6,6 +7,7 @@ import { BreathSlabProps } from "./BreathSlab.def";
 import { Breathing, BreathSetItem, TopMenu } from "components/molecules";
 import { FIXED_PROTOCOLS } from "constants/config";
 import { BreathAnimationToMilliseconds, isBreathSetActive } from "utils";
+import { Trans, useTranslation } from "react-i18next";
 
 const MemoizedBreathing = memo(Breathing);
 const MemoizedCountdown = memo(Countdown);
@@ -23,6 +25,8 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
   onTempoChange,
   onShowInformation,
 }) => {
+  const { t, i18n } = useTranslation();
+
   const currentElement = () => {
     switch (breathingState) {
       case "standBy":
@@ -39,7 +43,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
               color: "white",
             }}
           >
-            Empezar
+            <Trans i18nKey="start" />
           </Button>
         );
 
@@ -125,7 +129,9 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
           p: [3, 4],
         }}
       >
-        <Heading sx={{ my: [3, 4], fontSize: [4, 5] }}>Recomendados:</Heading>
+        <Heading sx={{ my: [3, 4], fontSize: [4, 5] }}>
+          {t("recommendation")}:
+        </Heading>
         <Flex sx={{ flexDirection: "column", gap: 3 }}>
           {FIXED_PROTOCOLS.map((breathSet) => (
             <BreathSetItem

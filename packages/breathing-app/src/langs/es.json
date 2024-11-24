@@ -1,0 +1,62 @@
+{
+    "start": "Empezar",
+    "recommendation": "Recomendado",
+    "balanced": "Balanceado",
+    "duration": "Duración",
+    "indicators": "Indicadores",
+    "language": "Idioma",
+    "inhale": "Inhalar",
+    "exhale": "Exhalar",
+    "hold": "Retener",
+    "config": "Configuración",
+    "minutes": "minuto",
+    "seconds": "segundos",
+    "counter": "Contador",
+    "sound": "Sonido",
+    "vibration": "Vibración",
+    "square": "Caja",
+    "triangle": "Triángulo",
+    "invertedTriangle": "Triángulo Invertido",
+    "protocols": {
+        "usedTo": "Utiliza este protocolo para",
+        "indications": "Indicaciones",
+        "balancedUsedTo": {
+            "1": "Calmar el cuerpo y la mente",
+            "2": "Reducir el ritmo cardiaco",
+            "3": "Ganar claridad mental",
+            "4": "Al meditar"
+        },
+        "balancedIndications": {
+            "1": "Respira solo por la nariz y diafragmáticamente"
+        },
+        "squareUsedTo": {
+            "1": "Calmar el cuerpo y la mente",
+            "2": "Ganar claridad mental",
+            "3": "Incrementar el enfoque",
+            "4": "Reducir el ritmo cardiaco",
+            "5": "Inducir un Estado de Coherencia"
+        },
+        "squareIndications": {
+            "1": "Respira solo por la nariz y diafragmáticamente",
+            "2": "Enfócate en completar las 4 esquinas de la caja"
+        },
+        "triangleUsedTo": {
+            "1": "Reducir el ritmo cardiaco",
+            "2": "Ganar claridad mental y enfoque",
+            "3": "Mejorar la resistencia al CO2"
+        },
+        "triangleIndications": {
+            "1": "Respira solo por la nariz y diafragmáticamente",
+            "2": "Relaja el rostro, cuello y cuerpo en la retención"
+        },
+        "invertedTriangleUsedTo": {
+            "1": "Reducir el ritmo cardiaco",
+            "2": "Ganar claridad mental y enfoque",
+            "3": "Mejorar la resistencia al CO2"
+        },
+        "invertedTriangleIndications": {
+            "1": "Respira solo por la nariz y diafragmáticamente",
+            "2": "Relaja tu mente durante la retención"
+        }
+    }
+}

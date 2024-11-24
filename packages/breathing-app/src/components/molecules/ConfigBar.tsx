@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { Box, Flex, Heading } from "theme-ui";
+import { useTranslation } from "react-i18next";
 
 import { ConfigBarProps } from "./ConfigBar.def";
 
 export const ConfigBar: React.FC<ConfigBarProps> = ({ onClose }) => {
+  const { t } = useTranslation();
   return (
     <Flex
       sx={{
@@ -28,7 +30,7 @@ export const ConfigBar: React.FC<ConfigBarProps> = ({ onClose }) => {
       >
         <FontAwesomeIcon icon={faRightFromBracket} />
       </Box>
-      <Heading sx={{ fontSize: [4, 5] }}>Configuración</Heading>
+      <Heading sx={{ fontSize: [4, 5] }}>{t("config")}</Heading>
     </Flex>
   );
 };

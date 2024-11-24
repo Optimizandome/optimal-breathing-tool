@@ -2,12 +2,13 @@ import { Box, Flex, Heading, Text } from "theme-ui";
 
 import { Range } from "../atoms/Range";
 import { BreathingConfigProps } from "./BreathingConfig.def";
+import i18n from "../../utils/i18n";
 
 const configArr = [
-  { label: "Inhalar", min: 1, color: "secondary" },
-  { label: "Retener", min: 0, color: "primary" },
-  { label: "Exhalar", min: 1, color: "secondary" },
-  { label: "Retener", min: 0, color: "primary" },
+  { label: i18n().t("inhale"), min: 1, color: "secondary" },
+  { label: i18n().t("hold"), min: 0, color: "primary" },
+  { label: i18n().t("exhale"), min: 1, color: "secondary" },
+  { label: i18n().t("hold"), min: 0, color: "primary" },
 ] as const;
 
 export const BreathingConfig: React.FC<BreathingConfigProps> = ({

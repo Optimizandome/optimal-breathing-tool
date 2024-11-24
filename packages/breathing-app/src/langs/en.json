@@ -1,0 +1,62 @@
+{
+    "start": "Start",
+    "recommendation": "Recommended",
+    "balanced": "Balanced",
+    "duration": "Duration",
+    "indicators": "Indicators",
+    "language": "Language",
+    "inhale": "Inhale",
+    "exhale": "Exhale",
+    "hold": "Hold",
+    "config": "Settings",
+    "minutes": "minute",
+    "seconds": "seconds",
+    "counter": "Counter",
+    "sound": "Sound",
+    "vibration": "Vibration",
+    "square": "Box",
+    "triangle": "Triangle",
+    "invertedTriangle": "Inverted Triangle",
+    "protocols": {
+        "usedTo": "Use this protocol to",
+        "indications": "Indications",
+        "balancedUsedTo": {
+            "1": "Calm the body and mind",
+            "2": "Reduce heart rate",
+            "3": "Gain mental clarity",
+            "4": "While meditating"
+        },
+        "balancedIndications": {
+            "1": "Breathe only through the nose and diaphragmatically"
+        },
+        "squareUsedTo": {
+            "1": "Calm the body and mind",
+            "2": "Gain mental clarity",
+            "3": "Increase focus",
+            "4": "Reduce heart rate",
+            "5": "Induce a Coherence State"
+        },
+        "squareIndications": {
+            "1": "Breathe only through the nose and diaphragmatically",
+            "2": "Focus on completing the 4 corners of the box"
+        },
+        "triangleUsedTo": {
+            "1": "Reduce heart rate",
+            "2": "Gain mental clarity and focus",
+            "3": "Improve CO2 tolerance"
+        },
+        "triangleIndications": {
+            "1": "Breathe only through the nose and diaphragmatically",
+            "2": "Relax your face, neck, and body during retention"
+        },
+        "invertedTriangleUsedTo": {
+            "1": "Reduce heart rate",
+            "2": "Gain mental clarity and focus",
+            "3": "Improve CO2 tolerance"
+        },
+        "invertedTriangleIndications": {
+            "1": "Breathe only through the nose and diaphragmatically",
+            "2": "Relax your mind during retention"
+        }
+    }
+}
