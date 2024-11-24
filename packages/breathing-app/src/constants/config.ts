@@ -51,17 +51,17 @@ export const FIXED_PROTOCOLS: BreathProtocol[] = [
   },
   {
     id: "triangulo_invertido",
-    title: "Triángulo Invertido",
+    title: i18n().t("invertedTriangle"),
     image: require("assets/images/inverted_triangle.png"),
     text: "...",
     usedTo: [
-      "Reducir el ritmo cardiaco",
-      "Ganar claridad mental y enfoque",
-      "Mejorar la resistencia al CO2",
+      i18n().t("protocols.invertedTriangleUsedTo.1"),
+      i18n().t("protocols.invertedTriangleUsedTo.2"),
+      i18n().t("protocols.invertedTriangleUsedTo.3"),
     ],
     indications: [
-      "Respira solo por la nariz y diafragmáticamente",
-      "Relaja tu mente durante la retención",
+      i18n().t("protocols.invertedTriangleIndications.1"),
+      i18n().t("protocols.invertedTriangleIndications.2"),
     ],
     breaths: [4, 0, 4, 8],
   },
