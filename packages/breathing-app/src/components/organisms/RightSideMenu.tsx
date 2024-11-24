@@ -21,7 +21,7 @@ export const RightSideMenu: React.FC<RightSideMenuProps> = ({
   };
 
   return (
-    <Flex sx={{ size: "100%", flexDirection: "column" }}>
+    <Flex sx={{ size: "100%", flexDirection: "column", overflowY: "auto" }}>
       <ConfigBar onClose={onClose} />
       <BreathingConfig {...rest} />
 
