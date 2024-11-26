@@ -22,8 +22,8 @@ export const RightSideMenu: React.FC<RightSideMenuProps> = ({
 
   const handleChangeLang = async (lang: string) => {
     i18n.changeLanguage(lang);
-    // const labels = [t("inhale"), t("hold"), t("exhale"), t("hold")];
-    const labels = ["xx", "hxold", "esdsdxhale", "hosdsld"];
+    const labels = [t("inhale"), t("hold"), t("exhale"), t("hold")];
+
     dispatch(updateBreathingsLabels(labels));
   };
 
