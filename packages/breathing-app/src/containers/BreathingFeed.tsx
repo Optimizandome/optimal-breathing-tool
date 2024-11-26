@@ -158,13 +158,13 @@ export const BreathingFeed: React.FC = () => {
     await delay(80);
     endPracticeSound();
     setCurrentBreathingState("standBy");
-    // setShowCelebration(true);
-
+    setShowCelebration(true);
+    await delay(1200);
     confirmAlert({
       customUI: SuccessPracticeDialog,
     });
     await delay(800);
-    // setShowCelebration(false);
+    setShowCelebration(false);
   };
 
   const debouncedTempoChange = debounce(onTempoChangeHandler, 80);
