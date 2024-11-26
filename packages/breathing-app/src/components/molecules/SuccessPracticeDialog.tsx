@@ -1,12 +1,12 @@
 import { Button, Flex, Text } from "theme-ui";
-import { useTranslation } from "react-i18next";
 
 import { SuccessPracticeDialogProps } from "./SuccessPracticeDialog.def";
+import i18n from "utils/i18n";
 
 export const SuccessPracticeDialog: React.FC<SuccessPracticeDialogProps> = ({
   onClose,
+  ...rest
 }) => {
-  const { t } = useTranslation();
   return (
     <Flex
       sx={{
@@ -27,10 +27,10 @@ export const SuccessPracticeDialog: React.FC<SuccessPracticeDialogProps> = ({
           alignSelf: "center",
         }}
       >
-        {t("congratulations")}
+        {rest.title}
       </Text>
       <Text sx={{ color: "#c7ffed", my: "24px", alignSelf: "center" }}>
-        {t("congratsMessage")}
+        {rest.message}
       </Text>
       <Button
         onClick={onClose}
@@ -42,7 +42,7 @@ export const SuccessPracticeDialog: React.FC<SuccessPracticeDialogProps> = ({
           cursor: "pointer",
         }}
       >
-        {t("accept")}
+        {i18n().t("accept")}
       </Button>
     </Flex>
   );

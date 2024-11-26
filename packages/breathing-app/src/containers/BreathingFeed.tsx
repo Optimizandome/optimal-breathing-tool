@@ -161,9 +161,11 @@ export const BreathingFeed: React.FC = () => {
     await delay(100);
     setCurrentBreathingState("standBy");
     await delay(1200);
-    // confirmAlert({
-    //   customUI: SuccessPracticeDialog,
-    // });
+    confirmAlert({
+      customUI: SuccessPracticeDialog as any,
+      title: t("congratulations"),
+      message: t("congratsMessage"),
+    });
     await delay(800);
     setShowCelebration(false);
   };
