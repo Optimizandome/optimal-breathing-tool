@@ -1,20 +1,21 @@
 import { Box, Flex, Heading, Text } from "theme-ui";
+import { useTranslation } from "react-i18next";
 
 import { Range } from "../atoms/Range";
 import { BreathingConfigProps } from "./BreathingConfig.def";
-import i18n from "../../utils/i18n";
-
-const configArr = [
-  { label: i18n().t("inhale"), min: 1, color: "secondary" },
-  { label: i18n().t("hold"), min: 0, color: "primary" },
-  { label: i18n().t("exhale"), min: 1, color: "secondary" },
-  { label: i18n().t("hold"), min: 0, color: "primary" },
-] as const;
 
 export const BreathingConfig: React.FC<BreathingConfigProps> = ({
   currentBreathings,
   onUpdateBreathing,
 }) => {
+  const { t } = useTranslation();
+
+  const configArr: any[] = [
+    { label: t("inhale"), min: 1, color: "secondary" },
+    { label: t("hold"), min: 0, color: "primary" },
+    { label: t("exhale"), min: 1, color: "secondary" },
+    { label: t("hold"), min: 0, color: "primary" },
+  ];
   return (
     <Flex sx={{ p: 4, gap: 2, textAlign: "center" }}>
       {configArr.map((config, index) => (

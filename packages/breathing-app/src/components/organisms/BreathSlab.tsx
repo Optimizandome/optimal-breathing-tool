@@ -8,6 +8,7 @@ import { Breathing, BreathSetItem, TopMenu } from "components/molecules";
 import { FIXED_PROTOCOLS } from "constants/config";
 import { BreathAnimationToMilliseconds, isBreathSetActive } from "utils";
 import { Trans, useTranslation } from "react-i18next";
+import { BreathProtocol } from "types";
 
 const MemoizedBreathing = memo(Breathing);
 const MemoizedCountdown = memo(Countdown);
@@ -25,7 +26,65 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
   onTempoChange,
   onShowInformation,
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+
+  const translationMap = {
+    balanceado: {
+      title: t("balanced"),
+      usedTo: [
+        t("protocols.balancedUsedTo.1"),
+        t("protocols.balancedUsedTo.2"),
+        t("protocols.balancedUsedTo.3"),
+        t("protocols.balancedUsedTo.4"),
+      ],
+      indications: [t("protocols.balancedIndications.1")],
+    },
+    caja: {
+      title: t("square"),
+      usedTo: [
+        t("protocols.squareUsedTo.1"),
+        t("protocols.squareUsedTo.2"),
+        t("protocols.squareUsedTo.3"),
+        t("protocols.squareUsedTo.4"),
+      ],
+      indications: [
+        t("protocols.squareIndications.1"),
+        t("protocols.squareIndications.2"),
+      ],
+    },
+    triangulo: {
+      title: t("triangle"),
+      usedTo: [
+        t("protocols.triangleUsedTo.1"),
+        t("protocols.triangleUsedTo.2"),
+        t("protocols.triangleUsedTo.3"),
+      ],
+      indications: [
+        t("protocols.triangleIndications.1"),
+        t("protocols.triangleIndications.2"),
+      ],
+    },
+    triangulo_invertido: {
+      title: t("invertedTriangle"),
+      usedTo: [
+        t("protocols.invertedTriangleUsedTo.1"),
+        t("protocols.invertedTriangleUsedTo.2"),
+        t("protocols.invertedTriangleUsedTo.3"),
+      ],
+      indications: [
+        t("protocols.invertedTriangleIndications.1"),
+        t("protocols.invertedTriangleIndications.2"),
+      ],
+    },
+  };
+
+  const translatedProtocols: any[] = FIXED_PROTOCOLS.map((protocol) => {
+    const index = protocol.id as keyof typeof translationMap;
+    return {
+      ...protocol,
+      ...translationMap[index],
+    };
+  });
 
   const currentElement = () => {
     switch (breathingState) {
@@ -43,7 +102,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
               color: "white",
             }}
           >
-            <Trans i18nKey="start" />
+            {t("start")}
           </Button>
         );
 
@@ -97,7 +156,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
           flexDirection: "column",
           alignItems: "center",
           px: [3, 4],
-          py: 3,
+          py: 1,
         }}
       >
         <Flex
@@ -129,11 +188,11 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
           p: [3, 4],
         }}
       >
-        <Heading sx={{ my: [3, 4], fontSize: [4, 5] }}>
+        <Heading sx={{ my: [2, 3], fontSize: [4, 5] }}>
           {t("recommendation")}:
         </Heading>
         <Flex sx={{ flexDirection: "column", gap: 3 }}>
-          {FIXED_PROTOCOLS.map((breathSet) => (
+          {translatedProtocols.map((breathSet) => (
             <BreathSetItem
               onShowInformation={onShowInformation}
               active={isBreathSetActive(breathSet, breathings)}

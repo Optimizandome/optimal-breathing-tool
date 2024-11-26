@@ -8,7 +8,7 @@ export const LangSelector: React.FC<{
     onChange(event.target.value);
   };
   return (
-    <Flex sx={{ flexDirection: "column", gap: [2, 3] }}>
+    <Flex sx={{ flexDirection: "column", gap: [1, 2], mb: 2 }}>
       <Label>
         <Radio
           name="lang"

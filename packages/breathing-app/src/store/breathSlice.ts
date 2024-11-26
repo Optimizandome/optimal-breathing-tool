@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { BreathingAnimation } from "types";
+import getI18n from "utils/i18n";
 
 export type BreathState = {
   breathings: [
@@ -27,25 +28,25 @@ const initialState: BreathState = {
     {
       duration: 4,
       breathingState: "inhale",
-      label: "Inhalar",
+      label: getI18n().t("inhale"),
       color: "#D1C4E9",
     },
     {
       duration: 0,
       breathingState: "inhale_hold",
-      label: "Retener",
+      label: getI18n().t("hold"),
       color: "#7E57C2",
     },
     {
       duration: 6,
       breathingState: "exhale",
-      label: "Exhalar",
+      label: getI18n().t("exhale"),
       color: "#C5CAE9",
     },
     {
       duration: 4,
       breathingState: "exhale_hold",
-      label: "Retener",
+      label: getI18n().t("hold"),
       color: "#5C6BC0",
     },
   ],
@@ -85,6 +86,15 @@ export const breathingSlice = createSlice({
         duration: times[index],
       })) as BreathState["breathings"];
     },
+    updateBreathingsLabels: (
+      state: BreathState,
+      action: PayloadAction<string[]>
+    ) => {
+      state.breathings = state.breathings.map((breath, index) => ({
+        ...breath,
+        label: action.payload[index],
+      })) as BreathState["breathings"];
+    },
     updateIndicators: (
       state: BreathState,
       action: PayloadAction<BreathState["config"]["indicators"]>
@@ -116,6 +126,7 @@ export const {
   updateIndicators,
   toggleIndicator,
   updateDuration,
+  updateBreathingsLabels,
 } = breathingSlice.actions;
 
 export const breathingReducer = breathingSlice.reducer;

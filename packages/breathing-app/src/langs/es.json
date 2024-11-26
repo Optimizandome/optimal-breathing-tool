@@ -17,6 +17,13 @@
     "square": "Caja",
     "triangle": "Triángulo",
     "invertedTriangle": "Triángulo Invertido",
+    "areYouSure": "¿Estás seguro?",
+    "confirmLost": "Tu práctica actual se perderá",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "accept": "Aceptar",
+    "congrats": "¡Felicidades!",
+    "congratsMessage": "Completaste tu práctica",
     "protocols": {
         "usedTo": "Utiliza este protocolo para",
         "indications": "Indicaciones",

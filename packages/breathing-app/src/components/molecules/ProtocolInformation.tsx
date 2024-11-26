@@ -53,7 +53,7 @@ export const ProtocolInformation: React.FC<PRotocolInfoProps> = ({
           sx={{ size: [6], margin: "0 auto" }}
         />
         <Text>Tempo: {protocol.breaths.map((t) => t / 4).join(":")}</Text>
-        <Text sx={{ my: 3, fontWeight: "bold" }}>{t("usedTo")}:</Text>
+        <Text sx={{ my: 3, fontWeight: "bold" }}>{t("protocols.usedTo")}:</Text>
         <Flex sx={{ flexDirection: "column" }} as="ul">
           {protocol.usedTo.map((usedTo) => (
             <Text key={usedTo} as="li">

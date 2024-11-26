@@ -50,7 +50,7 @@ export const OptimalBreathing: React.FC = () => {
         >
           <BreathingFeed />
         </Flex>
-        <Flex sx={{ width: [6, 7, 8], height: "100%", bg: "white", p: 2 }}>
+        <Flex sx={{ width: [6, 7, 8], height: "100%", bg: "white" }}>
           <BreathingControl />
         </Flex>
       </Flex>

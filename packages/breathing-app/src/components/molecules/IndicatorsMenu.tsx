@@ -14,7 +14,7 @@ export const IndicatorsMenu: React.FC<IndicatorsMenuProps> = ({
         sx={{
           justifyContent: "space-between",
           alignItems: "center",
-          py: [2, 3],
+          py: [1, 2],
         }}
       >
         <Label sx={{ flex: 1 }}>{t("counter")}</Label>
@@ -56,7 +56,7 @@ export const IndicatorsMenu: React.FC<IndicatorsMenuProps> = ({
         sx={{
           justifyContent: "space-between",
           alignItems: "center",
-          py: [2, 3],
+          py: [1, 2],
         }}
       >
         <Label sx={{ flex: 1 }}>{t("vibration")}</Label>

@@ -7,6 +7,7 @@ import { StringParam, useQueryParams } from "use-query-params";
 import Lottie from "lottie-react";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { useTranslation } from "react-i18next";
 
 import { RootState, setRightMenuState, updateBreathings } from "store";
 import { BreathProtocol } from "types";
@@ -21,12 +22,19 @@ import { FIXED_PROTOCOLS } from "constants/config";
 import { delay, getActiveProtocol } from "utils";
 import celebration from "assets/animation/celebration.json";
 import changeStateSound from "assets/sounds/bells.mp3";
-import exhaleSound from "assets/sounds/female-exhala.mp3";
-import inhaleSound from "assets/sounds/female-inhala.mp3";
-import holdSound from "assets/sounds/female-retiene.mp3";
+import inhale_es from "assets/sounds/inhale_es.mp3";
+import exhale_es from "assets/sounds/exhale_es.mp3";
+import hold_es from "assets/sounds/hold_es.mp3";
+import inhale_en from "assets/sounds/inhale_en.mp3";
+import exhale_en from "assets/sounds/exhale_en.mp3";
+import hold_en from "assets/sounds/hold_en.mp3";
 import { useNoSleep } from "utils/hooks";
 
 export const BreathingFeed: React.FC = () => {
+  const { i18n } = useTranslation();
+  const inhaleSound = i18n.language === "en" ? inhale_en : inhale_es;
+  const exhaleSound = i18n.language === "en" ? exhale_en : exhale_es;
+  const holdSound = i18n.language === "en" ? hold_en : hold_es;
   const {
     breathings,
     config: {
@@ -53,6 +61,7 @@ export const BreathingFeed: React.FC = () => {
   const totalTime = minutes * 60 + seconds;
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [playExhaleStateSound] = useSound(exhaleSound, {
     interrupt: true,
@@ -104,8 +113,8 @@ export const BreathingFeed: React.FC = () => {
             onCancel={() => {
               onClose();
             }}
-            title="¿Estás seguro?"
-            message="Tu práctica actual se perderá"
+            title={t("areYouSure")}
+            message={t("confirmLost")}
           />
         ),
       });
@@ -126,6 +135,7 @@ export const BreathingFeed: React.FC = () => {
       switch (index) {
         case 0:
           playInhaleStateSound();
+
           break;
         case 1:
           playHoldStateSound();

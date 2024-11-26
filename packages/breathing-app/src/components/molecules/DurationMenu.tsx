@@ -10,7 +10,7 @@ export const DurationMenu: React.FC<DurationMenuProps> = ({
   const { t } = useTranslation();
   return (
     <Flex sx={{ flexDirection: "column" }}>
-      <Flex sx={{ alignItems: "center", mb: [2, 3] }}>
+      <Flex sx={{ alignItems: "center", mb: [1, 2] }}>
         <Box sx={{ width: "200px" }}>
           <Label>
             {minutes} {t("minutes")}
@@ -38,7 +38,7 @@ export const DurationMenu: React.FC<DurationMenuProps> = ({
           }}
         />
       </Flex>
-      <Flex sx={{ alignItems: "center", my: [2, 3] }}>
+      <Flex sx={{ alignItems: "center", my: [1, 2] }}>
         <Box sx={{ width: "200px" }}>
           <Label>
             {seconds} {t("seconds")}
