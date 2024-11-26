@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/optimal-breathing-tool/static/css/main.3f9d56db.css",
-    "main.js": "/optimal-breathing-tool/static/js/main.0821e673.js",
-    "static/js/728.aae8f382.chunk.js": "/optimal-breathing-tool/static/js/728.aae8f382.chunk.js",
-    "static/js/400.a159f3e6.chunk.js": "/optimal-breathing-tool/static/js/400.a159f3e6.chunk.js",
+    "main.css": "/optimal-breathing-tool/static/css/main.8fec3016.css",
+    "main.js": "/optimal-breathing-tool/static/js/main.2c84ada0.js",
+    "static/js/918.c97e6f16.chunk.js": "/optimal-breathing-tool/static/js/918.c97e6f16.chunk.js",
+    "static/js/415.e080289c.chunk.js": "/optimal-breathing-tool/static/js/415.e080289c.chunk.js",
     "static/media/bells.mp3": "/optimal-breathing-tool/static/media/bells.7e6c69dced26357e1a27.mp3",
+    "service-worker.js": "/optimal-breathing-tool/service-worker.js",
     "static/media/exhale_es.mp3": "/optimal-breathing-tool/static/media/exhale_es.b4e630ed9e6caa6cbc57.mp3",
     "static/media/hold_es.mp3": "/optimal-breathing-tool/static/media/hold_es.0e4a179e9e4a43f6f721.mp3",
     "static/media/inverted_triangle.png": "/optimal-breathing-tool/static/media/inverted_triangle.2e70196955f58d104237.png",
     "static/media/inhale_es.mp3": "/optimal-breathing-tool/static/media/inhale_es.63b42ef0bd35efc3abaa.mp3",
     "static/media/triangle.png": "/optimal-breathing-tool/static/media/triangle.33024294926f7d790a5e.png",
     "static/media/square.png": "/optimal-breathing-tool/static/media/square.771cbf3f2d7dff79025a.png",
-    "service-worker.js": "/optimal-breathing-tool/service-worker.js",
     "static/media/inhale_en.mp3": "/optimal-breathing-tool/static/media/inhale_en.b6790f7b391159e81381.mp3",
     "static/media/exhale_en.mp3": "/optimal-breathing-tool/static/media/exhale_en.e3e8f48c20f0d22431d6.mp3",
     "static/media/balanced.png": "/optimal-breathing-tool/static/media/balanced.d173b0c856c3da503431.png",
     "static/media/hold_en.mp3": "/optimal-breathing-tool/static/media/hold_en.9ecf4e07ab0fb63f454f.mp3",
     "index.html": "/optimal-breathing-tool/index.html",
-    "main.3f9d56db.css.map": "/optimal-breathing-tool/static/css/main.3f9d56db.css.map",
-    "main.0821e673.js.map": "/optimal-breathing-tool/static/js/main.0821e673.js.map",
-    "728.aae8f382.chunk.js.map": "/optimal-breathing-tool/static/js/728.aae8f382.chunk.js.map",
-    "400.a159f3e6.chunk.js.map": "/optimal-breathing-tool/static/js/400.a159f3e6.chunk.js.map"
+    "main.8fec3016.css.map": "/optimal-breathing-tool/static/css/main.8fec3016.css.map",
+    "main.2c84ada0.js.map": "/optimal-breathing-tool/static/js/main.2c84ada0.js.map",
+    "918.c97e6f16.chunk.js.map": "/optimal-breathing-tool/static/js/918.c97e6f16.chunk.js.map",
+    "415.e080289c.chunk.js.map": "/optimal-breathing-tool/static/js/415.e080289c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f9d56db.css",
-    "static/js/main.0821e673.js"
+    "static/css/main.8fec3016.css",
+    "static/js/main.2c84ada0.js"
   ]
 }
