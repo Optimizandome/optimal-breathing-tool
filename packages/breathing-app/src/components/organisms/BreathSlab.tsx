@@ -96,7 +96,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
               size: "60%",
               bg: "primary",
               borderRadius: "50%",
-              fontSize: [5, 6, 7, 8],
+              fontSize: [4, 5, 6, 7],
               fontWeight: "bold",
               cursor: "pointer",
               color: "white",
@@ -151,12 +151,12 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
       <Flex
         sx={{
           position: "relative",
-          width: ["100%", "500px", "550px", "600px"],
+          width: ["100%", "420px", "470px", "520px"],
           maxWidth: "100%",
           flexDirection: "column",
           alignItems: "center",
           px: [3, 4],
-          py: 1,
+          py: [2, 1],
         }}
       >
         <Flex
@@ -185,7 +185,7 @@ export const BreathSlab: React.FC<BreathSlabProps> = ({
           height: "100%",
           overflow: "auto",
           flexDirection: "column",
-          p: [3, 4],
+          px: [3, 4],
         }}
       >
         <Heading sx={{ my: [2, 3], fontSize: [4, 5] }}>

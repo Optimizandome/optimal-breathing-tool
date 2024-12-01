@@ -168,7 +168,7 @@ export const Breathing: React.FC<BreathingProps> = ({
               fontWeight: "bold",
             }}
           >
-            <Text sx={{ userSelect: "none", fontSize: [7, 8, 9] }}>
+            <Text sx={{ userSelect: "none", fontSize: [6, 7, 8] }}>
               {breathings[index].label}
             </Text>
           </animated.div>

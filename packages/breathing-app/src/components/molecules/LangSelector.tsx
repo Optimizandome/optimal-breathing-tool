@@ -3,7 +3,8 @@ import { Flex, Label, Radio } from "theme-ui";
 export const LangSelector: React.FC<{
   initialLang: string;
   onChange: (lang: string) => void;
-}> = ({ initialLang, onChange }) => {
+}> = ({ initialLang = "en", onChange }) => {
+  const baseInitial = initialLang.split("-")[0] || "en";
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   };
@@ -12,7 +13,7 @@ export const LangSelector: React.FC<{
       <Label>
         <Radio
           name="lang"
-          defaultChecked={initialLang === "en"}
+          defaultChecked={baseInitial === "en"}
           value="en"
           onChange={handleChange}
         />
@@ -21,7 +22,7 @@ export const LangSelector: React.FC<{
       <Label>
         <Radio
           name="lang"
-          defaultChecked={initialLang === "es"}
+          defaultChecked={baseInitial === "es"}
           value="es"
           onChange={handleChange}
         />

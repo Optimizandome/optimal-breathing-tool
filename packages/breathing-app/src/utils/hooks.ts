@@ -37,10 +37,8 @@ export const useNoSleep = (isPracticing: boolean) => {
   const device = useStayAwake();
   useEffect(() => {
     if (isPracticing) {
-      console.log("preventSleeping");
       device.preventSleeping();
     } else {
-      console.log("allowSleeping");
       device.allowSleeping();
     }
   }, [isPracticing, device]);
