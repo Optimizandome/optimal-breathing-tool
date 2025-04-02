@@ -3,6 +3,12 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import resources from "../langs";
 
+const getInitialLang = (): string => {
+  const params = new URLSearchParams(window.location.search);
+  console.log("params", params);
+  return params.get("lang") || "en";
+};
+
 const getI18n = (): any => {
   if (!i18n.isInitialized) {
     i18n
@@ -10,9 +16,8 @@ const getI18n = (): any => {
       .use(LanguageDetector)
       .init({
         resources,
-        // lng: "en",
+        lng: getInitialLang(),
         fallbackLng: "en",
-        // keySeparator: false,
         interpolation: {
           escapeValue: false,
         },
@@ -20,4 +25,5 @@ const getI18n = (): any => {
   }
   return i18n;
 };
+
 export default getI18n;

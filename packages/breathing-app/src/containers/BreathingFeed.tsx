@@ -32,9 +32,9 @@ import { useNoSleep } from "utils/hooks";
 
 export const BreathingFeed: React.FC = () => {
   const { i18n } = useTranslation();
-  const inhaleSound = i18n.language === "en" ? inhale_en : inhale_es;
-  const exhaleSound = i18n.language === "en" ? exhale_en : exhale_es;
-  const holdSound = i18n.language === "en" ? hold_en : hold_es;
+  const inhaleSound = i18n.language.includes("en") ? inhale_en : inhale_es;
+  const exhaleSound = i18n.language.includes("en") ? exhale_en : exhale_es;
+  const holdSound = i18n.language.includes("en") ? hold_en : hold_es;
   const {
     breathings,
     config: {
